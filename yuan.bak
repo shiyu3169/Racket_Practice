@@ -1,0 +1,16 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname yuan) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+(require 2htdp/image)
+(require 2htdp/universe)
+
+(define my-scene (empty-scene 300 300))
+(define ( draw-circle radius)
+  (place-image (circle radius "solid" "green") 150 150 my-scene))
+(define (next radius)
+  (+ 1 radius))
+
+                  
+(big-bang 5
+          (on-tick next 0.02)
+          (to-draw draw-circle))

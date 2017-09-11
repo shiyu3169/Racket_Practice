@@ -1,0 +1,12 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname |cons replace|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ())))
+;;(replace L1 "Later" "See Ya")->
+;;(cons "Hi" (cons "Bye" (cons "See Ya" empty)))
+;;replace: LOS String String -? LOS
+(define (replace a-los s1 s2)
+  (cond [(empty? a-los) empty]
+        [(string=? s1 (first a-los))
+         (cons s2 (replace (rest a-los) s1 s2))]
+        [else (cons(first a-los)
+                   (replace (rest a-los) s1 s2))]))
